@@ -13,6 +13,7 @@ app.engine('hbs', hbs({
   partialsDir: __dirname + '/views'
 }));
 
+app.use('/assets', express.static('assets'))
 app.set('view engine', 'hbs');
 
 app.listen(port, () => {
