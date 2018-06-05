@@ -9,8 +9,8 @@ const routes = require('./app/routes/routes') (app);
 app.engine('hbs', hbs({
   extname: '.hbs',
   defaultLayout: 'main',
-  layoutsDir: __dirname + '/app/views/layouts',
-  partialsDir: __dirname + '/app/views'
+  layoutsDir: __dirname + '/views/layouts',
+  partialsDir: __dirname + '/views'
 }));
 
 app.set('view engine', 'hbs');
