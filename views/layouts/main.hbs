@@ -14,11 +14,14 @@
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="assets/css/material-kit.css">
     <link rel="stylesheet" href="assets/css/material-dashboard.css?v=2.0.0">
+    <link rel="stylesheet" href="assets/css/select2.css">
     <!-- Documentation extras -->
+		<script src="assets/js/core/vue.min.js"></script>
+		<script src="assets/js/core/jquery.min.js"></script>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="assets/assets-for-demo/demo.css" rel="stylesheet" />
-		<script src="assets/js/core/vue.min.js"></script>
     <!-- iframe removal -->
   </head>
 
@@ -185,7 +188,6 @@
     </div>
   </body>
   <!--   Core JS Files   -->
-  <script src="assets/js/core/jquery.min.js"></script>
   <script src="assets/js/core/popper.min.js"></script>
   <script src="assets/js/bootstrap-material-design.js"></script>
   <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
@@ -197,19 +199,40 @@
   <script src="assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Material Dashboard Core initialisations of plugins and Bootstrap Material Design Library -->
   <script src="assets/js/material-dashboard.js?v=2.0.0"></script>
+	<script src="assets/js/plugins/moment.min.js"></script>
+	<script src="assets/js/plugins/bootstrap-datetimepicker.js"></script>
+	<script src="assets/js/plugins/select2.min.js"></script>
   <!-- demo init -->
   <script src="assets/js/plugins/demo.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
+			$('.datetimepicker').datetimepicker({
+				useCurrent: false,
+				format: "MM/DD/YYYY",
+				icons: {
+					time: "fa fa-clock-o",
+					date: "fa fa-calendar",
+					up: "fa fa-chevron-up",
+					down: "fa fa-chevron-down",
+					previous: 'fa fa-chevron-left',
+					next: 'fa fa-chevron-right',
+					today: 'fa fa-screenshot',
+					clear: 'fa fa-trash',
+					close: 'fa fa-remove'
+				}
+			});
 
-      //init wizard
+			$('select').select2();
+			$('.futuredate').data("DateTimePicker").minDate(moment());
 
-      // demo.initMaterialWizard();
+			//init wizard
 
-      // Javascript method's body can be found in assets/js/demos.js
-      demo.initDashboardPageCharts();
+			// demo.initMaterialWizard();
 
-      demo.initCharts();
+			// Javascript method's body can be found in assets/js/demos.js
+			demo.initDashboardPageCharts();
+
+			demo.initCharts();
 
     });
   </script>

@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-header card-header-primary">
 					<h4 class="card-title">\{{ addEdit }} Program</h4>
-          <p class="card-category">Complete your profile</p>
+          <p class="card-category">Enter the Program details below</p>
         </div>
         <div class="card-body">
           <form>
@@ -27,38 +27,26 @@
               </div>
 						</div>
 						<div class="row">
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Username</label>
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Email address</label>
-                  <input type="email" class="form-control">
-                </div>
-              </div>
-            </div>
-            <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="bmd-label-floating">Fist Name</label>
-                  <input type="text" class="form-control">
+                  <label class="bmd-label-floating">From Date</label>
+									<input type="text" class="form-control datetimepicker futuredate" id="fromDate" />
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="bmd-label-floating">Last Name</label>
-                  <input type="text" class="form-control">
+                  <label class="bmd-label-floating">To Date</label>
+									<input type="text" class="form-control datetimepicker futuredate" id="toDate" />
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label class="bmd-label-floating">Adress</label>
-                  <input type="text" class="form-control">
+                  <label class="bmd-label-floating">Acharya/Acharyashree</label>
+									<select class="form-control" id="selAcharya" multiple="multiple">
+										<option v-for="option in acharyas" v-bind:value="option.value">\{{ option.text }}</option>
+									</select>
                 </div>
               </div>
             </div>
@@ -84,16 +72,13 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <div class="form-group">
-                  <label>About Me</label>
-                  <div class="form-group">
-                    <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                    <textarea class="form-control" rows="5"></textarea>
-                  </div>
-                </div>
+								<div class="form-group">
+									<label class="bmd-label-floating">Remarks</label>
+									<textarea class="form-control" rows="5"></textarea>
+								</div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+						<button type="submit" class="btn btn-primary pull-right">\{{ addEdit }}</button>
             <div class="clearfix"></div>
           </form>
         </div>
@@ -127,6 +112,9 @@
                 </th>
                 <th>
 									Time
+                </th>
+                <th>
+									Delete
                 </th>
               </thead>
               <tbody>
