@@ -18,6 +18,7 @@
     <!-- Documentation extras -->
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="assets/assets-for-demo/demo.css" rel="stylesheet" />
+		<script src="assets/js/core/vue.min.js"></script>
     <!-- iframe removal -->
   </head>
 
@@ -30,19 +31,19 @@
           Tip 2: you can also add an image using data-image tag
         -->
         <div class="logo">
-          <a href="http://localhost/dashboard/dashboard.html" class="simple-text logo-normal">
+          <a href="/" class="simple-text logo-normal">
             Oshodhara
           </a>
         </div>
         <div class="sidebar-wrapper">
           <ul class="nav">
-            <li class="nav-item active ">
-              <a class="nav-link" href="dashboard.html">
+						<li class="nav-item {{ navDashboard }} ">
+              <a class="nav-link" href="/">
                 <i class="material-icons">dashboard</i>
                 <p>Dashboard</p>
               </a>
             </li>
-            <li class="nav-item ">
+						<li class="nav-item {{ navPrograms }} ">
               <a class="nav-link" href="/programs">
                 <i class="material-icons">content_paste</i>
                 <p>Programs</p>
