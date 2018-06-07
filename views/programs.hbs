@@ -13,7 +13,7 @@
 								<div class="form-group">
 									<label class="bmd-label-floating">Program</label>
 									<select class="form-control" id="selProgram">
-										<option v-for="option in programs" v-bind:value="option.value">\{{ option.text }}</option>
+										<option v-for="option in programs" v-bind:value="option.id" v-model="selectedProg">\{{ option.name }}</option>
 									</select>
 								</div>
               </div>
@@ -21,7 +21,7 @@
 								<div class="form-group">
 									<label class="label-control">Venue</label>
 									<select class="form-control" id="selVenue">
-										<option v-for="option in venues" v-bind:value="option.value">\{{ option.text }}</option>
+										<option v-for="option in venues" v-bind:value="option.id" v-model="selectedVenue">\{{ option.name }}</option>
 									</select>
 								</div>
               </div>
@@ -45,7 +45,7 @@
                 <div class="form-group">
                   <label class="bmd-label-floating">Acharya/Acharyashree</label>
 									<select class="form-control" id="selAcharya" multiple="multiple">
-										<option v-for="option in acharyas" v-bind:value="option.value">\{{ option.text }}</option>
+										<option v-for="option in acharyas" v-bind:value="option.id" v-model="selectedAcharyas">\{{ option.name }}</option>
 									</select>
                 </div>
               </div>
@@ -58,7 +58,7 @@
 								</div>
               </div>
             </div>
-						<button type="submit" class="btn btn-primary pull-right">\{{ addEdit }}</button>
+						<button class="btn btn-primary pull-right" v-on:click="addProg" onclick="clog">\{{ addEdit }}</button>
             <div class="clearfix"></div>
           </form>
         </div>

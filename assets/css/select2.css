@@ -69,6 +69,7 @@ padding: 0; }
 .select2-results__option {
 	padding: 6px;
 	user-select: none;
+	font-size: 14px;
 -webkit-user-select: none; }
 .select2-results__option[aria-selected] {
 cursor: pointer; }

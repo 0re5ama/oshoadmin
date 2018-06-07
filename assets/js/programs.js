@@ -2,24 +2,33 @@ var app = new Vue({
 	el: '#programForm',
 	data: {
 		addEdit: 'Add',
+		selectedProg: null,
+		selectedVenue: null,
+		selectedAcharyas: null,
 		programs: [
-			{ text: 'Dhyan Samadhi', value: '1' },
-			{ text: 'Shruti Samadhi', value: '2' },
-			{ text: 'Nirati Samadhi', value: '3' },
-			{ text: 'Amrit Samadhi', value: '4' }
+			{ name: 'Dhyan Samadhi', id: '1' },
+			{ name: 'Shruti Samadhi', id: '2' },
+			{ name: 'Nirati Samadhi', id: '3' },
+			{ name: 'Amrit Samadhi', id: '4' }
 		],
 		venues: [
-			{ text: 'Kathmandu', value: '1' },
-			{ text: 'Sauraha', value: '2' },
-			{ text: 'Lumbini', value: '3' },
-			{ text: 'Nepalgunj', value: '4' }
+			{ name: 'Kathmandu', id: '1' },
+			{ name: 'Sauraha', id: '2' },
+			{ name: 'Lumbini', id: '3' },
+			{ name: 'Nepalgunj', id: '4' }
 		],
 		acharyas: [
-			{ text: 'Osho Maitreya', value: '1' },
-			{ text: 'Osho Nirakar', value: '2' },
-			{ text: 'Osho Bashudev', value: '3' },
-			{ text: 'Osho Mahendra', value: '4' }
-		]
+			{ name: 'Osho Maitreya', id: '1' },
+			{ name: 'Osho Nirakar', id: '2' },
+			{ name: 'Osho Bashudev', id: '3' },
+			{ name: 'Osho Mahendra', id: '4' }
+		],
+		schedule: [ ]
+	},
+	methods: {
+		addProg: function (event) {
+			console.log(this.selectedProg);
+		}
 	}
 });
 
@@ -31,3 +40,8 @@ $(function () {
 		$('#fromDate').data('DateTimePicker').maxDate(e.date);
 	});
 });
+
+function clog () {
+	console.log('asdf');
+	return;
+}
