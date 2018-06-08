@@ -1,229 +1,231 @@
 <div class="container-fluid" id='programForm'>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header card-header-primary">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header card-header-primary">
 					<h4 class="card-title">\{{ addEdit }} Program</h4>
-          <p class="card-category">Enter the Program details below</p>
-        </div>
-        <div class="card-body">
-          <form>
-            <div class="row">
-              <div class="col-md-6">
+					<p class="card-category">Enter the Program details below</p>
+				</div>
+				<div class="card-body">
+					<form>
+						<div class="row">
+							<div class="col-md-6">
 								<div class="form-group">
 									<label class="bmd-label-floating">Program</label>
-									<select class="form-control" id="selProgram">
-										<option v-for="option in programs" v-bind:value="option.id" v-model="selectedProg">\{{ option.name }}</option>
+									<select class="form-control" id="selProgram" v-model="selectedProg">
+										<option disabled value="">Please select one</option>
+										<option v-for="option in programs" v-bind:value="option">\{{ option.name }}</option>
+										\{{ selectedProg }}
 									</select>
 								</div>
-              </div>
+							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="label-control">Venue</label>
-									<select class="form-control" id="selVenue">
-										<option v-for="option in venues" v-bind:value="option.id" v-model="selectedVenue">\{{ option.name }}</option>
+									<select class="form-control" id="selVenue" v-model="selectedVenue">
+										<option v-for="option in venues" v-bind:value="option.id">\{{ option.name }}</option>
 									</select>
 								</div>
-              </div>
+							</div>
 						</div>
 						<div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="bmd-label-floating">From Date</label>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="bmd-label-floating">From Date</label>
 									<input type="text" class="form-control datetimepicker futuredate" id="fromDate" />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="bmd-label-floating">To Date</label>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="bmd-label-floating">To Date</label>
 									<input type="text" class="form-control datetimepicker futuredate" id="toDate" />
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Acharya/Acharyashree</label>
-									<select class="form-control" id="selAcharya" multiple="multiple">
-										<option v-for="option in acharyas" v-bind:value="option.id" v-model="selectedAcharyas">\{{ option.name }}</option>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label class="bmd-label-floating">Acharya/Acharyashree</label>
+									<select class="form-control" id="selAcharya" multiple="multiple" v-model="selectedAcharyas">
+										<option v-for="option in acharyas" v-bind:value="option.id">\{{ option.name }}</option>
 									</select>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
 								<div class="form-group">
 									<label class="bmd-label-floating">Remarks</label>
 									<textarea class="form-control" rows="5"></textarea>
 								</div>
-              </div>
-            </div>
-						<button class="btn btn-primary pull-right" v-on:click="addProg" onclick="clog">\{{ addEdit }}</button>
-            <div class="clearfix"></div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</form>
+					<button class="btn btn-primary pull-right" @click="addProg">\{{ addEdit }}</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header card-header-primary">
-          <h4 class="card-title ">Programs list</h4>
-          <p class="card-category"> Here is a subtitle for this table</p>
-        </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table">
-              <thead class=" text-primary">
-                <th>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header card-header-primary">
+					<h4 class="card-title ">Programs list</h4>
+					<p class="card-category"> Here is a subtitle for this table</p>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table">
+							<thead class=" text-primary">
+								<th>
 									SN
-                </th>
-                <th>
-                  Program Name
-                </th>
-                <th>
+								</th>
+								<th>
+									Program Name
+								</th>
+								<th>
 									Place
-                </th>
-                <th>
+								</th>
+								<th>
 									Date
-                </th>
-                <th>
+								</th>
+								<th>
 									Acharya/Acharyashree
-                </th>
-                <th>
+								</th>
+								<th>
 									Delete
-                </th>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    1
-                  </td>
-                  <td>
-                    Dakota Rice
-                  </td>
-                  <td>
-                    Niger
-                  </td>
-                  <td>
-                    Oud-Turnhout
-                  </td>
-                  <td class="text-primary">
-                    $36,738
-                  </td>
+								</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										1
+									</td>
+									<td>
+										Dakota Rice
+									</td>
+									<td>
+										Niger
+									</td>
+									<td>
+										Oud-Turnhout
+									</td>
+									<td class="text-primary">
+										$36,738
+									</td>
 									<td>
 										Delete
 									</td>
-                </tr>
-                <tr>
-                  <td>
-                    2
-                  </td>
-                  <td>
-                    Minerva Hooper
-                  </td>
-                  <td>
-                    Curaçao
-                  </td>
-                  <td>
-                    Sinaai-Waas
-                  </td>
-                  <td class="text-primary">
-                    $23,789
-                  </td>
+								</tr>
+								<tr>
+									<td>
+										2
+									</td>
+									<td>
+										Minerva Hooper
+									</td>
+									<td>
+										Curaçao
+									</td>
+									<td>
+										Sinaai-Waas
+									</td>
+									<td class="text-primary">
+										$23,789
+									</td>
 									<td>
 										Delete
 									</td>
-                </tr>
-                <tr>
-                  <td>
-                    3
-                  </td>
-                  <td>
-                    Sage Rodriguez
-                  </td>
-                  <td>
-                    Netherlands
-                  </td>
-                  <td>
-                    Baileux
-                  </td>
-                  <td class="text-primary">
-                    $56,142
-                  </td>
+								</tr>
+								<tr>
+									<td>
+										3
+									</td>
+									<td>
+										Sage Rodriguez
+									</td>
+									<td>
+										Netherlands
+									</td>
+									<td>
+										Baileux
+									</td>
+									<td class="text-primary">
+										$56,142
+									</td>
 									<td>
 										Delete
 									</td>
-                </tr>
-                <tr>
-                  <td>
-                    4
-                  </td>
-                  <td>
-                    Philip Chaney
-                  </td>
-                  <td>
-                    Korea, South
-                  </td>
-                  <td>
-                    Overland Park
-                  </td>
-                  <td class="text-primary">
-                    $38,735
-                  </td>
+								</tr>
+								<tr>
+									<td>
+										4
+									</td>
+									<td>
+										Philip Chaney
+									</td>
+									<td>
+										Korea, South
+									</td>
+									<td>
+										Overland Park
+									</td>
+									<td class="text-primary">
+										$38,735
+									</td>
 									<td>
 										Delete
 									</td>
-                </tr>
-                <tr>
-                  <td>
-                    5
-                  </td>
-                  <td>
-                    Doris Greene
-                  </td>
-                  <td>
-                    Malawi
-                  </td>
-                  <td>
-                    Feldkirchen in Kärnten
-                  </td>
-                  <td class="text-primary">
-                    $63,542
-                  </td>
+								</tr>
+								<tr>
+									<td>
+										5
+									</td>
+									<td>
+										Doris Greene
+									</td>
+									<td>
+										Malawi
+									</td>
+									<td>
+										Feldkirchen in Kärnten
+									</td>
+									<td class="text-primary">
+										$63,542
+									</td>
 									<td>
 										Delete
 									</td>
-                </tr>
-                <tr>
-                  <td>
-                    6
-                  </td>
-                  <td>
-                    Mason Porter
-                  </td>
-                  <td>
-                    Chile
-                  </td>
-                  <td>
-                    Gloucester
-                  </td>
-                  <td class="text-primary">
-                    $78,615
-                  </td>
+								</tr>
+								<tr>
+									<td>
+										6
+									</td>
+									<td>
+										Mason Porter
+									</td>
+									<td>
+										Chile
+									</td>
+									<td>
+										Gloucester
+									</td>
+									<td class="text-primary">
+										$78,615
+									</td>
 									<td>
 										Delete
 									</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <script src="assets/js/programs.js"></script>
