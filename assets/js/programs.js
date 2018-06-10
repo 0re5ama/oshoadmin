@@ -1,3 +1,11 @@
+function Schedule (data) {
+	var self = this;
+	this.progName = data.progName;
+	this.place = data.place;
+	this.date = data.date;
+	this.acharya = data.acharya;
+}
+
 Vue.config.devtools = true;
 var app = new Vue({
 	el: '#programForm',
@@ -7,6 +15,8 @@ var app = new Vue({
 			selectedProg: '',
 			selectedVenue: null,
 			selectedAcharyas: null,
+			fromDate: null,
+			toDate: null,
 			programs: [
 				{ name: 'Dhyan Samadhi', id: '1' },
 				{ name: 'Shruti Samadhi', id: '2' },
@@ -30,7 +40,23 @@ var app = new Vue({
 	},
 	methods: {
 		addProg: function (event) {
-			console.log(this.selectedProg);
+			this.schedule.push({
+				prog: {
+					progID: $('#selProgram').val(),
+					progName: $('#selProgram :selected').text(),
+				},
+				venue: {
+					placeID: $('#selVenue').val(),
+					placeName: $('#selVenue :selected').text(),
+				},
+				acharyas: {
+					acharyaIDs: $('#selAcharya').val(),
+					acharyaNames: $('#selAcharya').select2('data').map(x => x.text),
+				},
+				fromDate: $('#fromDate').val(),
+				toDate: $('#toDate').val(),
+				remarks: $('#remarks').val()
+			});
 		}
 	}
 });
