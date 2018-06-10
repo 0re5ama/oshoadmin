@@ -14,7 +14,7 @@
 									<label class="bmd-label-floating">Program</label>
 									<select class="form-control" id="selProgram" v-model="selectedProg">
 										<option disabled value="">Please select one</option>
-										<option v-for="option in programs" v-bind:value="option">\{{ option.name }}</option>
+										<option v-for="option in programs" v-bind:value="option.id">\{{ option.name }}</option>
 										\{{ selectedProg }}
 									</select>
 								</div>
