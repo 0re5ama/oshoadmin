@@ -146,7 +146,7 @@
           </div>
         </nav>
         <!-- End Navbar -->
-        <div class="content">
+        <div class="content" id="content">
           {{{ body }}}
         </div>
         <footer class="footer ">
@@ -206,6 +206,7 @@
   <script src="assets/js/plugins/demo.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
+      /*
 			$('.datetimepicker').datetimepicker({
 				useCurrent: false,
 				format: "MM/DD/YYYY",
@@ -221,9 +222,10 @@
 					close: 'fa fa-remove'
 				}
 			});
+      */
 
 			$('select').select2();
-			$('.futuredate').data("DateTimePicker").minDate(moment());
+			// $('.futuredate').data("DateTimePicker").minDate(moment());
 
 			//init wizard
 

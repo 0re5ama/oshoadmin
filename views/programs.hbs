@@ -12,7 +12,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="bmd-label-floating">Program</label>
-									<select class="form-control" id="selProgram" v-model="selectedProg">
+									<select class="form-control" id="selProgram" v-model="selectedProg" required="required">
 										<option disabled value="">Please select one</option>
 										<option v-for="option in programs" v-bind:value="option.id">\{{ option.name }}</option>
 										\{{ selectedProg }}
@@ -22,7 +22,8 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="label-control">Venue</label>
-									<select class="form-control" id="selVenue" v-model="selectedVenue">
+									<select class="form-control" id="selVenue" v-model="selectedVenue" required="required">
+										<option disabled value="">Please select one</option>
 										<option v-for="option in venues" v-bind:value="option.id">\{{ option.name }}</option>
 									</select>
 								</div>
@@ -31,14 +32,14 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label class="bmd-label-floating">From Date</label>
-									<input type="text" class="form-control datetimepicker futuredate" id="fromDate" />
+									<label class="bmd-label-floating">From Date (MM/DD/YYYY)</label>
+									<input type="text" class="form-control" id="fromDate" required="required" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label class="bmd-label-floating">To Date</label>
-									<input type="text" class="form-control datetimepicker futuredate" id="toDate" />
+									<label class="bmd-label-floating">To Date (MM/DD/YYYY)</label>
+									<input type="text" class="form-control" id="toDate" required="required" />
 								</div>
 							</div>
 						</div>
@@ -46,7 +47,7 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label class="bmd-label-floating">Acharya/Acharyashree</label>
-									<select class="form-control" id="selAcharya" multiple="multiple" v-model="selectedAcharyas">
+									<select class="form-control" id="selAcharya" multiple="multiple" v-model="selectedAcharyas" required="required">
 										<option v-for="option in acharyas" v-bind:value="option.id">\{{ option.name }}</option>
 									</select>
 								</div>
@@ -56,13 +57,13 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label class="bmd-label-floating">Remarks</label>
-									<textarea class="form-control" rows="5"></textarea>
+									<textarea class="form-control" rows="5" id="remarks"></textarea>
 								</div>
 							</div>
 						</div>
+            <button class="btn btn-primary pull-right" @click="addProg">\{{ addEdit }}</button>
 						<div class="clearfix"></div>
 					</form>
-					<button class="btn btn-primary pull-right" @click="addProg">\{{ addEdit }}</button>
 				</div>
 			</div>
 		</div>
@@ -100,124 +101,24 @@
 								</th>
 							</thead>
 							<tbody>
-								<tr>
+								<tr v-for="(item, i) in schedules">
 									<td>
-										1
-									</td>
-									<td>
-										Dakota Rice
-									</td>
-									<td>
-										Niger
-									</td>
-									<td>
-										Oud-Turnhout
+                  \{{ i + 1 }}
 									</td>
 									<td class="text-primary">
-										$36,738
+                    \{{ item.program.name }}
 									</td>
 									<td>
-                    <i class="material-icons">delete</i>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										2
+										\{{ item.venue.name }}
 									</td>
 									<td>
-										Minerva Hooper
+										\{{ item.fromDate + ' - ' + item.toDate }}
 									</td>
 									<td>
-										Curaçao
+										\{{ item.acharyas.name.join(', ') }}
 									</td>
 									<td>
-										Sinaai-Waas
-									</td>
-									<td class="text-primary">
-										$23,789
-									</td>
-									<td>
-                    <i class="material-icons">delete</i>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										3
-									</td>
-									<td>
-										Sage Rodriguez
-									</td>
-									<td>
-										Netherlands
-									</td>
-									<td>
-										Baileux
-									</td>
-									<td class="text-primary">
-										$56,142
-									</td>
-									<td>
-                    <i class="material-icons">delete</i>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										4
-									</td>
-									<td>
-										Philip Chaney
-									</td>
-									<td>
-										Korea, South
-									</td>
-									<td>
-										Overland Park
-									</td>
-									<td class="text-primary">
-										$38,735
-									</td>
-									<td>
-                    <i class="material-icons">delete</i>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										5
-									</td>
-									<td>
-										Doris Greene
-									</td>
-									<td>
-										Malawi
-									</td>
-									<td>
-										Feldkirchen in Kärnten
-									</td>
-									<td class="text-primary">
-										$63,542
-									</td>
-									<td>
-                    <i class="material-icons">delete</i>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										6
-									</td>
-									<td>
-										Mason Porter
-									</td>
-									<td>
-										Chile
-									</td>
-									<td>
-										Gloucester
-									</td>
-									<td class="text-primary">
-										$78,615
-									</td>
-									<td>
-                    <i class="material-icons">delete</i>
+                    <i class="material-icons text-primary" style="cursor: pointer" @click="removeProg(item, i)">delete</i>
 									</td>
 								</tr>
 							</tbody>
