@@ -1,3 +1,13 @@
+var config = {
+  apiKey: 'AIzaSyCdWhf0Qw27cevTZLqc25OSbRizGd-9wGQ',
+  projectId: 'oshovatika-3f675',
+  authDomain: 'oshovatika-3f675.firebaseapp.com'
+};
+firebase.initializeApp(config);
+const firestore = firebase.firestore();
+const settings = {timestampsInSnapshots: true};
+firestore.settings(settings);
+
 Vue.config.devtools = true;
 var app = new Vue({
   el: '#content',
@@ -40,15 +50,28 @@ var app = new Vue({
           id: $('#selVenue').val(),
           name: $('#selVenue :selected').text(),
         },
-        acharyas: {
-          id: $('#selAcharya').val(),
-          name: $('#selAcharya').select2('data').map(x => x.text),
-        },
+        acharyas: $('#selAcharya').select2('data').map(x => {
+          var obj = {};
+          obj.id = x.id;
+          obj.name = x.text;
+          return obj;
+        }),
         fromDate: $('#fromDate').val(),
         toDate: $('#toDate').val(),
+        status: 'A', // Active, Cancelled
         remarks: $('#remarks').val()
       };
 
+      firestore.collection("schedule")
+        .add(schedule)
+        .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
+
+      console.log(this.schedules);
       this.schedules.push(schedule);
       this.clearForm();
       event.preventDefault();
@@ -68,12 +91,10 @@ var app = new Vue({
 });
 
 $(function () {
-  /*
-  $('#fromDate').on('dp.change', function (e) {
-    $('#toDate').data('DateTimePicker').minDate(e.date);
+  firestore.collection('schedule').get().then(x => {
+    x.forEach(y => {
+      // console.log(y.id, y.data());
+      app.schedules.push(y.data());
+    });
   });
-  $('#toDate').on('dp.change', function (e) {
-    $('#fromDate').data('DateTimePicker').maxDate(e.date);
-  });
-   */
 });

@@ -12,11 +12,13 @@ const admin = require('firebase-admin');
 const auth = require('firebase-functions/lib/providers/auth');
 // console.log(auth);
 
-admin.initializeApp({
+var config = {
   apiKey: 'AIzaSyCdWhf0Qw27cevTZLqc25OSbRizGd-9wGQ',
   projectId: 'oshovatika-3f675',
   authDomain: 'oshovatika-3f675.firebaseapp.com'
-});
+};
+
+admin.initializeApp(config);
 
 var db = admin.firestore();
 var noti = admin.messaging();

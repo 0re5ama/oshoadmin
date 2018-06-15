@@ -115,7 +115,7 @@
 										\{{ item.fromDate + ' - ' + item.toDate }}
 									</td>
 									<td>
-										\{{ item.acharyas.name.join(', ') }}
+										\{{ item.acharyas.map(x => x.name).join(', ') }}
 									</td>
 									<td>
                     <i class="material-icons text-primary" style="cursor: pointer" @click="removeProg(item, i)">delete</i>
